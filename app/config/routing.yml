@@ -1,3 +1,3 @@
-app:
-    resource: "@AppBundle/Controller/"
-    type:     annotation
+app_gastos_blog:
+    resource: "@AppGastosBlogBundle/Resources/config/routing.yml"
+    prefix:   /

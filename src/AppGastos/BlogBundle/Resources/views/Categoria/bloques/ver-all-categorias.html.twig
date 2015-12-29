@@ -1,0 +1,36 @@
+{# empty Twig template #}
+
+{% set categorias = categorias %}
+<div class="row mbl">
+    <div class="col-sm-6">
+        <h3>Categorías activas</h3>
+    </div>
+    <div class="col-sm-6">
+        <br />
+        <div class="input-group">
+            <input type="text" class="form-control"/>
+            <p class="input-group-btn">
+                <button type="button" class="btn btn-white">Buscar</button>
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="list-group">
+    {% for categoria in categorias %}
+        <div class="list-group-item">
+            <span>{{categoria.id}}</span>&nbsp; - &nbsp;
+            <span style="min-width: 120px; display: inline-block;" class="name">{{categoria.titulo}}</span>
+            <span class="todo-actions pull-right clearfix">
+                <a href="{{ path('app_gastos_blog_editar_categoria', {'id': categoria.id}) }}" class="todo-edit">
+                    <i class="fa fa-edit"></i>
+                </a>&nbsp;
+                <a href="" class="todo-remove" data-toggle="modal" data-target="#modalEliminarCategoria{{categoria.id}}">
+                    <i class="fa fa-trash-o"></i>
+                </a>
+            </span>
+        </div>
+    {% endfor %}
+</div>
+
+

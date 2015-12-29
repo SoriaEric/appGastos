@@ -1,0 +1,33 @@
+{% extends "AppGastosBlogBundle::base-blog.html.twig" %}
+
+{% block title "Editar un tipo de gasto" %}
+
+
+    {% block content %}
+
+
+        <div id="tab-general">
+            <div class="row">
+                <div class="col-xs-12">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#tab-ver-categorias" data-toggle="tab">Categorías</a></li>
+                        <li><a href="#tab-messages" data-toggle="tab">Nueva</a></li>
+                        <li><a href="#tab-edit" data-toggle="tab">Nueva</a></li>
+                    </ul>
+                    <div id="generalTabContent" class="tab-content">
+                        <div id="tab-ver-categorias" class="tab-pane fade in active">
+                            
+                                {{ include('@bloques/ver-all-categorias.html.twig', {'categorias' : categorias}) }}
+                        </div>
+                    </div>
+            </div>
+
+            
+        </div>
+
+    {% endblock %}
+
+
+
+
+

@@ -1,0 +1,32 @@
+{% extends "AppGastosBlogBundle::base-blog.html.twig" %}
+
+{% block title "Editar un tipo de gasto" %}
+
+
+    {% block content %}
+        
+        
+            <div id="tab-general">
+                <div class="row">
+                    {% for flash_message in app.session.flashbag.get('noticia') %}
+                        <div class="col-lg-12">
+                            <div class="note note-success"><h4 class="box-heading">Todo correcto!</h4>
+
+                                <p> {{ flash_message }}</p>
+                            </div>
+
+                        {% endfor %}
+
+
+                    </div>
+
+
+                </div>
+            </div>
+            
+        {% endblock %}
+
+
+
+
+

@@ -37,6 +37,9 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    paths:
+        "%kernel.root_dir%/../src/AppGastos/BlogBundle/Resources/views/Categoria/bloques": bloques
+     
 
 # Doctrine Configuration
 doctrine:

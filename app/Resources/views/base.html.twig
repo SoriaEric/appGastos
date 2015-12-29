@@ -1,13 +1,68 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
-        <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="{{ asset('bundles/appgastosblog/images/icons/favicon.ico') }}">
+        <!--Loading bootstrap css-->
+        <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,300,700">
+        <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Oswald:400,700,300">
+        <link type="text/css" rel="stylesheet" href="{{ asset('bundles/appgastosblog/styles/jquery-ui-1.10.4.custom.min.css') }}">
+        <link type="text/css" rel="stylesheet" href="{{ asset('bundles/appgastosblog/styles/font-awesome.min.css') }}">
+        <link type="text/css" rel="stylesheet" href="{{ asset('bundles/appgastosblog/styles/bootstrap.min.css') }}">
+        <link type="text/css" rel="stylesheet" href="{{ asset('bundles/appgastosblog/styles/animate.css') }}">
+        <link type="text/css" rel="stylesheet" href="{{ asset('bundles/appgastosblog/styles/all.css') }}">
+        <link type="text/css" rel="stylesheet" href="{{ asset('bundles/appgastosblog/styles/main.css') }}">
+        <link type="text/css" rel="stylesheet" href="{{ asset('bundles/appgastosblog/styles/style-responsive.css') }}">
+        <link type="text/css" rel="stylesheet" href="{{ asset('bundles/appgastosblog/styles/zabuto_calendar.min.css') }}">
+        <link type="text/css" rel="stylesheet" href="{{ asset('bundles/appgastosblog/styles/pace.css') }}">
+        <link type="text/css" rel="stylesheet" href="{{ asset('bundles/appgastosblog/styles/jquery.news-ticker.css') }}">
         {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
-    <body>
+    <body>    
+
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+
+
+        <script src="{{ asset('bundles/appgastosblog/script/jquery-1.10.2.min.js')}}"></script>
+        <script src="{{ asset('bundles/appgastosblog/script/jquery-migrate-1.2.1.min.js')}}"></script>
+        <script src="{{ asset('bundles/appgastosblog/script/jquery-ui.js') }}"></script>
+        <script src="{{ asset('bundles/appgastosblog/script/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('bundles/appgastosblog/script/bootstrap-hover-dropdown.js') }}"></script>
+        <script src="{{ asset('bundles/appgastosblog/script/html5shiv.js') }}"></script>
+        <script src="{{ asset('bundles/appgastosblog/script/respond.min.js') }}"></script>
+        <script src="{{ asset('bundles/appgastosblog/script/jquery.metisMenu.js') }}"></script>
+        <script src="{{ asset('bundles/appgastosblog/script/jquery.slimscroll.js') }}"></script>
+        <script src="{{ asset('bundles/appgastosblog/script/jquery.cookie.js') }}"></script>
+        <script src="{{ asset('bundles/appgastosblog/script/icheck.min.js') }}"></script>
+        <script src="{{ asset('bundles/appgastosblog/script/custom.min.js') }}"></script>
+        <script src="{{ asset('bundles/appgastosblog/script/jquery.news-ticker.js') }}"></script>
+        <script src="{{ asset('bundles/appgastosblog/script/jquery.menu.js') }}"></script>
+        <script src="{{ asset('bundles/appgastosblog/script/pace.min.js') }}"></script>
+        <script src="{{ asset('bundles/appgastosblog/script/holder.js') }}"></script>
+        <script src="{{ asset('bundles/appgastosblog/script/responsive-tabs.js') }}"></script>
+        <script src="{{ asset('bundles/appgastosblog/script/jquery.flot.js') }}"></script>
+        <script src="{{ asset('bundles/appgastosblog/script/jquery.flot.categories.js') }}"></script>
+        <script src="{{ asset('bundles/appgastosblog/script/jquery.flot.pie.js') }}"></script>
+        <script src="{{ asset('bundles/appgastosblog/script/jquery.flot.tooltip.js') }}"></script>
+        <script src="{{ asset('bundles/appgastosblog/script/jquery.flot.resize.js') }}"></script>
+        <script src="{{ asset('bundles/appgastosblog/script/jquery.flot.fillbetween.js') }}"></script>
+        <script src="{{ asset('bundles/appgastosblog/script/jquery.flot.stack.js') }}"></script>
+        <script src="{{ asset('bundles/appgastosblog/script/jquery.flot.spline.js') }}"></script>
+        <script src="{{ asset('bundles/appgastosblog/script/zabuto_calendar.min.js') }}"></script>
+        <script src="{{ asset('bundles/appgastosblog/script/index.js') }}"></script>
+        <!--LOADING SCRIPTS FOR CHARTS-->
+        <script src="{{ asset('bundles/appgastosblog/script/highcharts.js') }}"></script>
+        <script src="{{ asset('bundles/appgastosblog/script/data.js') }}"></script>
+        <script src="{{ asset('bundles/appgastosblog/script/drilldown.js') }}"></script>
+        <script src="{{ asset('bundles/appgastosblog/script/exporting.js') }}"></script>
+        <script src="{{ asset('bundles/appgastosblog/script/highcharts-more.js') }}"></script>
+        <script src="{{ asset('bundles/appgastosblog/script/charts-highchart-pie.js') }}"></script>
+        <script src="{{ asset('bundles/appgastosblog/script/charts-highchart-more.js') }}"></script>
+        <!--CORE JAVASCRIPT-->
+        <script src="{{ asset('bundles/appgastosblog/script/main.js') }}"></script>
+        {% block javascripts %}{% endblock %}    
     </body>
 </html>

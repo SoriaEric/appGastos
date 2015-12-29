@@ -1,0 +1,62 @@
+
+{% if modalEliminar is defined %}
+    <!--BEGIN MODAL CONFIG PORTLET-->
+    {% for categoria in categorias %}
+        <div id="modalEliminarCategoria{{categoria.id}}" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" data-dismiss="modal" aria-hidden="true" class="close">
+                            &times;</button>
+                        <h4 class="modal-title">Eliminar Categoría</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            Vas a eliminar la categoría {{categoria.titulo}} , <strong>¿estás seguro?</strong>
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" data-dismiss="modal" class="btn btn-default">
+                            Cancelar</button>
+                        <a href="{{ path('app_gastos_blog_eliminar_categoria', {'id': categoria.id}) }}"
+                           type="button" class="btn btn-primary">
+                            Eliminar categoría
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    <!--END MODAL CONFIG PORTLET-->
+{% endif %}
+
+{% if modalEditar is defined %}
+    <!--BEGIN MODAL CONFIG PORTLET-->
+    {% for categoria in categorias %}
+        <div id="modalEditarCategoria{{categoria.id}}" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" data-dismiss="modal" aria-hidden="true" class="close">
+                            &times;</button>
+                        <h4 class="modal-title">Editar Categoría</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>
+                            Vas a editar la categoría {{categoria.titulo}} , <strong>¿estás seguro?</strong>
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" data-dismiss="modal" class="btn btn-default">
+                            Cancelar</button>
+                        <a href="{{ path('app_gastos_blog_editar_categoria', {'id': categoria.id}) }}"
+                           type="button" class="btn btn-primary">
+                            Guardar
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    <!--END MODAL CONFIG PORTLET-->
+{% endif %}

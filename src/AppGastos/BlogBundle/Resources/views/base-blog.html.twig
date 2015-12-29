@@ -1,0 +1,38 @@
+{% extends "::base.html.twig" %}
+{% block body %} 
+    <div>        
+        <!--BEGIN BACK TO TOP-->
+        <a id="totop" href="#"><i class="fa fa-angle-up"></i></a>
+        <!--END BACK TO TOP-->
+        
+        <!--BEGIN TOPBAR-->
+        <div id="header-topbar-option-demo" class="page-header-topbar">
+            {{ include('::menu-superior.html.twig',
+                {'tituloApp': 'appGastos'}) }}
+            {{ include('::modales.html.twig')}}
+        </div>
+        <!--END TOPBAR-->
+        <div id="wrapper">
+            {{ include('::menu-lateral.html.twig',
+                            {'menuActivo': 'active'}) 
+            }}
+            
+            <!--BEGIN PAGE WRAPPER-->
+            <div id="page-wrapper">
+                {{ include('::layout.html.twig',
+                            {'titulo': titulo}) }}
+
+                
+                <!--BEGIN CONTENT-->
+                <div class="page-content">
+                    {% block content %}{% endblock %}
+                </div>                
+                <!--END CONTENT-->
+            
+                {{ include('::footer.html.twig') }}
+            </div>
+    </div>
+    <!--END PAGE WRAPPER-->
+</div>
+</div>
+{% endblock %}

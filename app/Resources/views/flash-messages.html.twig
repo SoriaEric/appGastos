@@ -1,0 +1,27 @@
+{# empty Twig template #}
+<div class="row">
+    {% for flashMessage in app.session.flashbag.get('done') %}  
+        <div class="col-xs-12">
+            <div class="alert alert-info alert-dismissable">
+                <button type="button" data-dismiss="alert" aria-hidden="true" class="close">&times;</button>
+                {{ flashMessage }}
+            </div>
+        </div>
+    {% endfor %}
+    {% for flashMessage in app.session.flashbag.get('error') %}  
+        <div class="col-xs-12">
+            <div class="alert alert-danger alert-dismissable">
+                <button type="button" data-dismiss="alert" aria-hidden="true" class="close">&times;</button>
+                {{ flashMessage }}
+            </div>
+        </div>
+    {% endfor %}
+    {% for flashMessage in app.session.flashbag.get('info') %}  
+        <div class="col-xs-12">
+            <div class="alert alert-success alert-dismissable">
+                <button type="button" data-dismiss="alert" aria-hidden="true" class="close">&times;</button>
+                {{ flashMessage }}
+            </div>
+        </div>
+    {% endfor %}
+</div>

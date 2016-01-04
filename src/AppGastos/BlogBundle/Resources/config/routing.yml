@@ -1,23 +1,28 @@
-app_gastos_blog_categorias:
+blog_categorias:
     path:     /blog/categorias
     defaults: { _controller: AppGastosBlogBundle:Categoria:index }
 
-app_gastos_blog_insertar_categoria:
+blog_insertar_categoria:
     path:     /blog/insertar-categoria
     defaults: { _controller: AppGastosBlogBundle:Categoria:insertar }
 
-app_gastos_blog_editar_categoria:
+blog_editar_categoria:
     path:     /blog/editar/{id}
     defaults: { _controller: AppGastosBlogBundle:Categoria:editar }
+    
+blog_editar_Confirmar_categoria:
+    path:     /blog/editar
+    defaults: { _controller: AppGastosBlogBundle:Categoria:editarConfirmar }
 
-app_gastos_blog_ver_categoria:
+
+blog_ver_categoria:
     path:     /blog/ver-{titulo}
     defaults: { _controller: AppGastosBlogBundle:veCategoriar:ver }
     
-app_gastos_blog_eliminar_categoria:
+blog_eliminar_categoria:
     path:     /blog/categoria/eliminar/{id}
     defaults: { _controller: AppGastosBlogBundle:Categoria:eliminar }
 
-app_gastos_blog_articulos:
+blog_articulos:
     path:     /blog/articulos
     defaults: { _controller: AppGastosBlogBundle:Articulos:index }

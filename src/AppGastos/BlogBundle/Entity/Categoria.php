@@ -3,6 +3,8 @@
 namespace AppGastos\BlogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+ 
 
 /**
  * Categoria
@@ -32,6 +34,7 @@ class Categoria
      * @var string
      *
      * @ORM\Column(name="titulo", type="string", length=255)
+     * @Assert\NotBlank()
      */
     private $titulo;
 
@@ -46,6 +49,7 @@ class Categoria
      * @var int
      *
      * @ORM\Column(name="posicion", type="smallint")
+     * @Assert\NotBlank()
      */
     private $posicion;
 

@@ -4,7 +4,7 @@
         <!--BEGIN BACK TO TOP-->
         <a id="totop" href="#"><i class="fa fa-angle-up"></i></a>
         <!--END BACK TO TOP-->
-        
+
         <!--BEGIN TOPBAR-->
         <div id="header-topbar-option-demo" class="page-header-topbar">
             {{ include('::menu-superior.html.twig',
@@ -16,23 +16,24 @@
             {{ include('::menu-lateral.html.twig',
                             {'menuActivo': 'active'}) 
             }}
-            
+
             <!--BEGIN PAGE WRAPPER-->
             <div id="page-wrapper">
                 {{ include('::layout.html.twig',
                             {'titulo': titulo}) }}
 
-                
+
                 <!--BEGIN CONTENT-->
                 <div class="page-content">
+                    {{ include('::flash-messages.html.twig') }}
                     {% block content %}{% endblock %}
                 </div>                
                 <!--END CONTENT-->
-            
+
                 {{ include('::footer.html.twig') }}
             </div>
+        </div>
+        <!--END PAGE WRAPPER-->
     </div>
-    <!--END PAGE WRAPPER-->
-</div>
 </div>
 {% endblock %}

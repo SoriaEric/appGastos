@@ -1,28 +1,45 @@
 blog_categorias:
     path:     /blog/categorias
-    defaults: { _controller: AppGastosBlogBundle:Categoria:index }
+    defaults:
+        _controller: AppGastosBlogBundle:Categoria:index
 
 blog_insertar_categoria:
     path:     /blog/insertar-categoria
-    defaults: { _controller: AppGastosBlogBundle:Categoria:insertar }
+    defaults: 
+        _controller: AppGastosBlogBundle:Categoria:insertar
 
 blog_editar_categoria:
     path:     /blog/editar/{id}
-    defaults: { _controller: AppGastosBlogBundle:Categoria:editar }
+    defaults: 
+        _controller: AppGastosBlogBundle:Categoria:editar
     
 blog_editar_Confirmar_categoria:
     path:     /blog/editar
-    defaults: { _controller: AppGastosBlogBundle:Categoria:editarConfirmar }
+    defaults:
+        _controller: AppGastosBlogBundle:Categoria:editarConfirmar
 
 
 blog_ver_categoria:
     path:     /blog/ver-{titulo}
-    defaults: { _controller: AppGastosBlogBundle:veCategoriar:ver }
+    defaults:
+        _controller: AppGastosBlogBundle:veCategoriar:ver
     
 blog_eliminar_categoria:
     path:     /blog/categoria/eliminar/{id}
-    defaults: { _controller: AppGastosBlogBundle:Categoria:eliminar }
+    defaults:
+        _controller: AppGastosBlogBundle:Categoria:eliminar
 
 blog_articulos:
     path:     /blog/articulos
-    defaults: { _controller: AppGastosBlogBundle:Articulos:index }
+    defaults:
+        _controller: AppGastosBlogBundle:Articulos:index
+
+
+
+ejemplo:
+    path:     /blog/articulos/{page}
+    defaults:
+        _controller: AppGastosBlogBundle:Articulos:index
+        page:        1
+        title:       "Hello world!"
+        #En el controlador hay que recibir los dos parámetros.{$page, $title}

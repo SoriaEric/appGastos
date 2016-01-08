@@ -57,33 +57,48 @@ class CategoriaController extends Controller {
      * @return type
      * @throws type
      */
-    public function editarAction($id) {
+    public function editarAction($id, Request $request) {
         $em = $this->getDoctrine()->getManager();
-        $categoria = $em->getRepository('AppGastosBlogBundle:Categoria')
-                ->findOneById($id);
-        if (!$categoria) {
-            throw $this->createNotFoundException('Esta categoría no existe');
+        
+        if (!$id && !$request->isMethod('POST')) {
+            throw $this->createNotFoundException('Esta categoría no existe' . $id);
         }
+        
+        $categoria = $em->getRepository('AppGastosBlogBundle:Categoria')
+            ->findOneById($id);
+
 //        $form = $this->createForm(CategoriaType::class, $categoria);
 
         $form = $this->createFormBuilder($categoria)
-                ->setAction($this->generateUrl('blog_editar_Confirmar_categoria'))
-                ->add('titulo', TextType::class)
-                ->add('descripcion', TextareaType::class)
-                ->add('posicion', IntegerType::class)
-                ->add('save', SubmitType::class, array('label' => 'Guardar'))
-                ->getForm();
+            ->add('titulo', TextType::class)
+            ->add('descripcion', TextareaType::class)
+            ->add('posicion', IntegerType::class)
+            ->add('save', SubmitType::class, array('label' => 'Guardar'))
+            ->getForm();
+        
+        if ($request->isMethod('POST')) {
+            $form->handleRequest($request);
+            if ($form->isValid()) {
+                // ... perform some action, such as saving the task to the database
+                $categoria = $form->getData();
+                $em->persist($categoria);
+                $em->flush();
+                $this->addFlash(
+                        'done', 'Se ha editado la categoría ' . $categoria->getTitulo() . ' correctamente.'
+                );
+                return $this->redirectToRoute('blog_categorias');
+            }
+        } else {
+            
 
-        //Crear el form de libros web y segir los pasos.
-
-
+        }
 
 
 
         return $this->render('AppGastosBlogBundle:Categoria:editar.html.twig', array(
                     'form' => $form->createView(),
                     'titulo' => 'Editar una categoría',
-                    'menuActive' => 'categorias', //Coloca calse active al botón del menú categorías
+                    'menuActive' => 'categorias', //Coloca clase active al botón del menú categorías
         ));
     }
 
@@ -95,7 +110,16 @@ class CategoriaController extends Controller {
      */
     public function editarConfirmarAction(Request $request) {
 
-        $categoria = new Categoria();
+        $postData = $request->get('categoria');
+        $id = $postData['id'];
+
+        $em = $this->getDoctrine()->getManager();
+        $categoria = $em->getRepository('AppGastosBlogBundle:Categoria')
+                ->findOneById($id);
+//        $form = $this->createForm(new TestimonialType(), $testimonial);
+
+
+
 
         $form = $this->createFormBuilder($categoria)
                 ->add('titulo', TextType::class)
@@ -104,18 +128,20 @@ class CategoriaController extends Controller {
                 ->add('save', SubmitType::class, array('label' => 'Guardar'))
                 ->getForm();
 
-        $form->handleRequest($request);
+//        $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             // ... perform some action, such as saving the task to the database
 
-            $em = $this->getDoctrine()->getEntityManager();
-            $em->persist($categoria);
             $em->flush();
+            $this->addFlash(
+                    'done', 'Se ha editado la categoría ' . $categoria->getTitulo() . ' correctamente.'
+            );
             return $this->redirectToRoute('blog_categorias');
         }
 
         return $this->render('AppGastosBlogBundle:Categoria:editar.html.twig', array(
+                    'id' => $id,
                     'form' => $form->createView(),
                     'titulo' => 'Editar una categoría',
                     'menuActive' => 'categorias', //Coloca calse active al botón del menú categorías
@@ -123,11 +149,11 @@ class CategoriaController extends Controller {
 
 
 
-        
-        
-        
-        
-        
+
+
+
+
+
 //
 //
 //        $em = $this->getDoctrine()->getManager();

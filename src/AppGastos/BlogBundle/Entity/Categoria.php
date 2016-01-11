@@ -41,7 +41,7 @@ class Categoria
     /**
      * @var string
      *
-     * @ORM\Column(name="descripcion", type="string", length=255)
+     * @ORM\Column(name="descripcion", type="text", length=255)
      */
     private $descripcion;
 

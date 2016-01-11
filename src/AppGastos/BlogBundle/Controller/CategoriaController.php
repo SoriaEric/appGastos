@@ -3,8 +3,11 @@
 namespace AppGastos\BlogBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use AppGastos\BlogBundle\Entity\Categoria;
 use Symfony\Component\HttpFoundation\Request;
+use AppGastos\BlogBundle\Entity\Categoria;
+use AppGastos\BlogBundle\Form\Type\CategoriaType;
+
+
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
@@ -65,33 +68,28 @@ class CategoriaController extends Controller {
         }
         
         $categoria = $em->getRepository('AppGastosBlogBundle:Categoria')
-            ->findOneById($id);
+            ->findOneById((int)$id);
 
-//        $form = $this->createForm(CategoriaType::class, $categoria);
+        $form = $this->createForm(CategoriaType::class, $categoria);
 
-        $form = $this->createFormBuilder($categoria)
-            ->add('titulo', TextType::class)
-            ->add('descripcion', TextareaType::class)
-            ->add('posicion', IntegerType::class)
-            ->add('save', SubmitType::class, array('label' => 'Guardar'))
-            ->getForm();
-        
-        if ($request->isMethod('POST')) {
-            $form->handleRequest($request);
-            if ($form->isValid()) {
-                // ... perform some action, such as saving the task to the database
-                $categoria = $form->getData();
-                $em->persist($categoria);
-                $em->flush();
-                $this->addFlash(
-                        'done', 'Se ha editado la categoría ' . $categoria->getTitulo() . ' correctamente.'
-                );
-                return $this->redirectToRoute('blog_categorias');
-            }
-        } else {
+//        $form = $this->createFormBuilder($categoria)
+//            ->add('titulo', TextType::class)
+//            ->add('descripcion', TextareaType::class)
+//            ->add('posicion', IntegerType::class)
+//            ->add('save', SubmitType::class, array('label' => 'Guardar'))
+//            ->getForm();
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $categoria = $form->getData();
+            $em->persist($categoria);
+            $em->flush();
+            $this->addFlash(
+                    'done', 'Se ha editado la categoría ' . $categoria->getTitulo() . ' correctamente.'
+            );
+            return $this->redirectToRoute('blog_categorias');
             
-
-        }
+        } 
 
 
 
@@ -108,67 +106,67 @@ class CategoriaController extends Controller {
      * @return type
      * @throws type
      */
-    public function editarConfirmarAction(Request $request) {
-
-        $postData = $request->get('categoria');
-        $id = $postData['id'];
-
-        $em = $this->getDoctrine()->getManager();
-        $categoria = $em->getRepository('AppGastosBlogBundle:Categoria')
-                ->findOneById($id);
-//        $form = $this->createForm(new TestimonialType(), $testimonial);
-
-
-
-
-        $form = $this->createFormBuilder($categoria)
-                ->add('titulo', TextType::class)
-                ->add('descripcion', TextareaType::class)
-                ->add('posicion', IntegerType::class)
-                ->add('save', SubmitType::class, array('label' => 'Guardar'))
-                ->getForm();
-
-//        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            // ... perform some action, such as saving the task to the database
-
-            $em->flush();
-            $this->addFlash(
-                    'done', 'Se ha editado la categoría ' . $categoria->getTitulo() . ' correctamente.'
-            );
-            return $this->redirectToRoute('blog_categorias');
-        }
-
-        return $this->render('AppGastosBlogBundle:Categoria:editar.html.twig', array(
-                    'id' => $id,
-                    'form' => $form->createView(),
-                    'titulo' => 'Editar una categoría',
-                    'menuActive' => 'categorias', //Coloca calse active al botón del menú categorías
-        ));
-
-
-
-
-
-
-
-
+//    public function editarConfirmarAction(Request $request) {
 //
+//        $postData = $request->get('categoria');
+//        $id = $postData['id'];
 //
 //        $em = $this->getDoctrine()->getManager();
 //        $categoria = $em->getRepository('AppGastosBlogBundle:Categoria')
 //                ->findOneById($id);
-//        if (!$categoria) {
-//            throw $this->createNotFoundException('Esta categoría no existe');
+////        $form = $this->createForm(new TestimonialType(), $testimonial);
+//
+//
+//
+//
+//        $form = $this->createFormBuilder($categoria)
+//                ->add('titulo', TextType::class)
+//                ->add('descripcion', TextareaType::class)
+//                ->add('posicion', IntegerType::class)
+//                ->add('save', SubmitType::class, array('label' => 'Guardar'))
+//                ->getForm();
+//
+////        $form->handleRequest($request);
+//
+//        if ($form->isSubmitted() && $form->isValid()) {
+//            // ... perform some action, such as saving the task to the database
+//
+//            $em->flush();
+//            $this->addFlash(
+//                    'done', 'Se ha editado la categoría ' . $categoria->getTitulo() . ' correctamente.'
+//            );
+//            return $this->redirectToRoute('blog_categorias');
 //        }
-////        $form = $this->createForm(CategoriaType::class, $categoria);
 //
-//        $em->persist($categoria);
-//        $em->flush();
+//        return $this->render('AppGastosBlogBundle:Categoria:editar.html.twig', array(
+//                    'id' => $id,
+//                    'form' => $form->createView(),
+//                    'titulo' => 'Editar una categoría',
+//                    'menuActive' => 'categorias', //Coloca calse active al botón del menú categorías
+//        ));
 //
-//        return $this->redirectToRoute('blog_categorias');
-    }
+//
+//
+//
+//
+//
+//
+//
+////
+////
+////        $em = $this->getDoctrine()->getManager();
+////        $categoria = $em->getRepository('AppGastosBlogBundle:Categoria')
+////                ->findOneById($id);
+////        if (!$categoria) {
+////            throw $this->createNotFoundException('Esta categoría no existe');
+////        }
+//////        $form = $this->createForm(CategoriaType::class, $categoria);
+////
+////        $em->persist($categoria);
+////        $em->flush();
+////
+////        return $this->redirectToRoute('blog_categorias');
+//    }
 
     /**
      * Función que elimina una categoría
@@ -198,7 +196,7 @@ class CategoriaController extends Controller {
     public function insertarAction() {
         $categoria = new Categoria;
         $categoria->setTitulo('una categoria');
-        $categoria->setDescripcion('Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años');
+        $categoria->setDescripcion('Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años');
         $categoria->setPosicion();
         $em = $this->getDoctrine()->getManager();
         $em->persist($categoria);
